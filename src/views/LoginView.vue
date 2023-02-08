@@ -22,7 +22,7 @@ const onSubmit = async () => {
     if (data) {
       localStorage.setItem("access_token", data.access_token);
       localStorage.setItem("user", JSON.stringify(data.user));
-      router.replace({ name: "About" });
+      router.replace({ name: "restos" });
     }
   } catch (e) {
     console.error(e);
