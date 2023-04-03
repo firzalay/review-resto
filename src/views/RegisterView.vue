@@ -11,6 +11,7 @@ const credentials = reactive({
     name: "",
     email: "",
     password: "",
+    password_confirmation: ""
 });
 
 const isRegistering = ref(false);
@@ -58,6 +59,8 @@ const onSubmit = async () => {
                     class="bg-blue-600 text-white p-2 w-full block hover:bg-blue-800 rounded transition-colors duration-200 select-none">
                     Register
                 </button>
+
+                <p class=" mt-2">Already have account? <router-link :to="{name: 'Login'}" class="text-blue-800">Login now</router-link></p>
             </form>
         </section>
     </main>

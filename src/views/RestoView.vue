@@ -124,8 +124,9 @@ onMounted(() => fetchRestos());
     <div class="max-w-screen-xl mx-auto p-4">
       <h1 class="font-[Poppins] text-3xl font-bold flex justify-center mt-5">All Resto</h1>
 
-      <div class="mt-10 flex flex-wrap gap-8 justify-center" >
-        <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow" v-for="resto in restos" :key="resto.id">
+      <div class="mt-10 flex flex-wrap gap-8 justify-center">
+        <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow" v-for="resto in restos"
+          :key="resto.id">
           <a href="#">
             <img class="p-8 rounded-t-lg" src="../assets/image/image-4.jpg" alt="product image" />
           </a>
@@ -142,7 +143,8 @@ onMounted(() => fetchRestos());
           </div>
 
           <RouterLink :to="{ name: 'restos-show', params: { id: resto.id } }"
-            class="inline-block p-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-800 mb-2 ml-4">See detail</RouterLink>
+            class="inline-block p-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-800 mb-2 ml-4">See detail
+          </RouterLink>
         </div>
       </div>
     </div>
@@ -150,73 +152,71 @@ onMounted(() => fetchRestos());
 
 
   <div class="min-h-min bg-[#ffffff]" id="contact">
-            <footer class="py-6 ">
-                <div class="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50">
-                    <div class="grid grid-cols-12">
-                        <div class="pb-6 col-span-full md:pb-0 md:col-span-6">
-                            <a rel="noopener noreferrer" href="#"
-                                class="flex justify-center space-x-3 md:justify-start">
-                                <span class="self-center text-2xl font-semibold">OurReviews.</span>
-                            </a>
-                        </div>
-                        <div class="col-span-6 text-center md:text-left md:col-span-3">
-                            <p class="pb-1 text-lg font-medium">Sponsorship</p>
-                            <ul>
-                                <li>
-                                    <a rel="noopener noreferrer" href="#" class="">BCA</a>
-                                </li>
-                                <li>
-                                    <a rel="noopener noreferrer" href="#" class="">Mandiri</a>
-                                </li>
-                                <li>
-                                    <a rel="noopener noreferrer" href="#" class="">BNI</a>
-                                </li>
-                                <li>
-                                    <a rel="noopener noreferrer" href="#" class="">BRI</a>
-                                </li>
-                                <li>
-                                    <a rel="noopener noreferrer" href="#" class="">Gopay</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-span-6 text-center md:text-left md:col-span-3">
-                            <p class="pb-1 text-lg font-medium">Our Office</p>
-                            <ul>
-                                <li>
-                                    <a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Surabaya</a>
-                                </li>
-                                <li>
-                                    <a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Jakarta</a>
-                                </li>
-                                <li>
-                                    <a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Kalimantan</a>
-                                </li>
-                                <li>
-                                    <a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Sumetara</a>
-                                </li>
-                                <li>
-                                    <a rel="noopener noreferrer" href="#"
-                                        class="hover:dark:text-violet-400">Balikpapan</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="grid justify-center pt-6 lg:justify-between">
-                        <div class="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:space-x-6">
-                            <span>©2023 All rights reserved</span>
-                        </div>
-                        <div class="flex justify-center pt-4 space-x-4 lg:pt-0 lg:col-end-13 text-2xl">
-                            <a href="https://www.instagram.com/arvvenkosmetik/" target="_blank"><i
-                                    class="bi bi-instagram transition duration-300 hover:opacity-50"></i></a>
-                            <a href="https://www.facebook.com/arvvenbeautystore/" target="_blank"><i
-                                    class="bi bi-facebook transition duration-300 hover:opacity-50"></i></a>
-                            <a href="https://vt.tiktok.com/ZSdGK167c/" target="_blank"><i
-                                    class="bi bi-tiktok transition duration-300 hover:opacity-50"></i></a>
-                            <a href="https://wa.me/+6285851117131" target="_blank"><i
-                                    class="bi bi-whatsapp transition duration-300 hover:opacity-50"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-    </div>
+    <footer class="py-6 ">
+      <div class="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50">
+        <div class="grid grid-cols-12">
+          <div class="pb-6 col-span-full md:pb-0 md:col-span-6">
+            <a rel="noopener noreferrer" href="#" class="flex justify-center space-x-3 md:justify-start">
+              <span class="self-center text-2xl font-semibold">OurReviews.</span>
+            </a>
+          </div>
+          <div class="col-span-6 text-center md:text-left md:col-span-3">
+            <p class="pb-1 text-lg font-medium">Sponsorship</p>
+            <ul>
+              <li>
+                <a rel="noopener noreferrer" href="#" class="">BCA</a>
+              </li>
+              <li>
+                <a rel="noopener noreferrer" href="#" class="">Mandiri</a>
+              </li>
+              <li>
+                <a rel="noopener noreferrer" href="#" class="">BNI</a>
+              </li>
+              <li>
+                <a rel="noopener noreferrer" href="#" class="">BRI</a>
+              </li>
+              <li>
+                <a rel="noopener noreferrer" href="#" class="">Gopay</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-span-6 text-center md:text-left md:col-span-3">
+            <p class="pb-1 text-lg font-medium">Our Office</p>
+            <ul>
+              <li>
+                <a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Surabaya</a>
+              </li>
+              <li>
+                <a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Jakarta</a>
+              </li>
+              <li>
+                <a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Kalimantan</a>
+              </li>
+              <li>
+                <a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Sumetara</a>
+              </li>
+              <li>
+                <a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Balikpapan</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="grid justify-center pt-6 lg:justify-between">
+          <div class="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:space-x-6">
+            <span>©2023 All rights reserved</span>
+          </div>
+          <div class="flex justify-center pt-4 space-x-4 lg:pt-0 lg:col-end-13 text-2xl">
+            <a href="https://www.instagram.com/arvvenkosmetik/" target="_blank"><i
+                class="bi bi-instagram transition duration-300 hover:opacity-50"></i></a>
+            <a href="https://www.facebook.com/arvvenbeautystore/" target="_blank"><i
+                class="bi bi-facebook transition duration-300 hover:opacity-50"></i></a>
+            <a href="https://vt.tiktok.com/ZSdGK167c/" target="_blank"><i
+                class="bi bi-tiktok transition duration-300 hover:opacity-50"></i></a>
+            <a href="https://wa.me/+6285851117131" target="_blank"><i
+                class="bi bi-whatsapp transition duration-300 hover:opacity-50"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
 </template>
