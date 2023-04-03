@@ -161,7 +161,7 @@ onMounted(() => fetchRestos());
                             </a>
                         </div>
                         <div class="col-span-6 text-center md:text-left md:col-span-3">
-                            <p class="pb-1 text-lg font-medium">Payment method</p>
+                            <p class="pb-1 text-lg font-medium">Sponsorship</p>
                             <ul>
                                 <li>
                                     <a rel="noopener noreferrer" href="#" class="">BCA</a>
@@ -181,23 +181,23 @@ onMounted(() => fetchRestos());
                             </ul>
                         </div>
                         <div class="col-span-6 text-center md:text-left md:col-span-3">
-                            <p class="pb-1 text-lg font-medium">Pengiriman</p>
+                            <p class="pb-1 text-lg font-medium">Our Office</p>
                             <ul>
                                 <li>
-                                    <a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">JNE</a>
+                                    <a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Surabaya</a>
                                 </li>
                                 <li>
-                                    <a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">JNT</a>
+                                    <a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Jakarta</a>
                                 </li>
                                 <li>
-                                    <a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">SiCepat</a>
+                                    <a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Kalimantan</a>
                                 </li>
                                 <li>
-                                    <a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Lion</a>
+                                    <a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Sumetara</a>
                                 </li>
                                 <li>
                                     <a rel="noopener noreferrer" href="#"
-                                        class="hover:dark:text-violet-400">NinjaExpress</a>
+                                        class="hover:dark:text-violet-400">Balikpapan</a>
                                 </li>
                             </ul>
                         </div>
