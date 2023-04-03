@@ -4,11 +4,9 @@ import { ref, onMounted } from "vue";
 import { RouterLink } from "vue-router";
 import BaseContainer from "../components/BaseContainer.vue";
 import BaseCard from "../components/BaseCard.vue";
-
 const repository = useRestoRepository();
 const isLoading = ref(true);
 const restos = ref([]);
-
 const fetchRestos = async () => {
   isLoading.value = true;
   try {
@@ -19,7 +17,7 @@ const fetchRestos = async () => {
   }
   isLoading.value = false;
 };
-
+onMounted(() => fetchRestos());
 const excerpt = (text, maxLenght = 10, indicator = "...") => {
   let textCopy = text;
   if (textCopy.length > maxLenght) {
@@ -27,8 +25,6 @@ const excerpt = (text, maxLenght = 10, indicator = "...") => {
   }
   return textCopy;
 };
-
-onMounted(() => fetchRestos());
 </script>
 
 <template>
