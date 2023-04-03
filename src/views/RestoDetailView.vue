@@ -3,8 +3,7 @@
 import { useRestoRepository } from "@/composables";
 import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import BaseCard from "@/components/BaseCard.vue";
-import BaseContainer from "../components/BaseContainer.vue";
+
 
 const repository = useRestoRepository();
 
@@ -41,17 +40,17 @@ const fetchReviews = async () => {
 
 const deleteResto = async () => {
 
-try {
-  const id = route.params.id;
-  const { data } = await repository.destroy(id);
-  if (data) {
-    router.replace({ name: "restos" });
+  try {
+    const id = route.params.id;
+    const { data } = await repository.destroy(id);
+    if (data) {
+      router.replace({ name: "restos" });
+    }
+  } catch (e) {
+    console.error(e);
   }
-} catch (e) {
-  console.error(e);
-}
 
-};  
+};
 
 
 
@@ -59,37 +58,83 @@ onMounted(() => fetchReviews());
 </script>
 
 <template>
-  <BaseContainer>
-    <RouterLink
-      :to="{ name: 'restos' }"
-      class="inline-block p-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-800"
-      >Back</RouterLink
-    >
-    <RouterLink
-      :to="{ name: 'restos-edit' }"
-      class="inline-block p-2 px-4 mx-2 bg-blue-600 text-white rounded hover:bg-blue-800"
-      >Edit</RouterLink
-    >
-   <form :action="route.path" class="inline-block p-2 px-4 mx-2 bg-red-600 text-white rounded hover:bg-red-800" method="post" @submit.prevent="deleteResto">
-    <button class="">Delete</button>
-   </form>
+  <section class="min-h-screen max-w-screen-xl mx-auto p-4">
+    <div class="mt-5">
+      <h1 class="font-[Poppins] text-4xl font-bold text-center">Resto Detail</h1>
+    </div>
 
-    <BaseCard class="mt-4 bg-red-600 text-white">
-      <template #title>Resto</template>
-    </BaseCard>
+    <div class="pt-5">
 
-    <BaseCard class="mt-4">
-      <template #title>{{ resto.name }}</template>
-      {{ resto.description }}
-    </BaseCard>
+      <div class="max-w-screen-xl flex justify-between mx-auto p-4">
+        <div>
+          <h1 class="font-[Poppins] font-bold text-3xl">{{ resto.name }}</h1>
 
-    <BaseCard class="mt-4 bg-red-600 text-white">
-      <template #title>Reviews</template>
-    </BaseCard>
+          <p class="font-[Montserrat]">{{ resto.description }}</p>
+        </div>
 
-    <BaseCard v-for="review in reviews" :key="review.id" class="mt-4">
-      <template #title>{{ review.user.name }}</template>
-      {{ review.text }}
-    </BaseCard>
-  </BaseContainer>
-</template>
+        <div class=" w-full md:block md:w-auto">
+          <img src="../assets/image/image-3.jpg" alt="" class="w-96 rounded-lg">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-5 max-w-screen-xl mx-auto p-4">
+      <h1 class="text-xl font-bold">Berikan review untuk restoran ini</h1>
+      <form class="mt-5">
+        <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-100 ">
+          <div class="px-4 py-2 bg-gray-100 rounded-t-lg ">
+            <label for="review" >Your review</label>
+            <textarea id="review" rows="4"
+              class="w-full px-0 text-sm text-gray-900 bg-gray-100 border-0  focus:ring-0  outline-none"
+              placeholder="Write a review..." required></textarea>
+          </div>
+
+          <p class="font-[Poppins] ml-3">Your rating</p>
+          <input type="number" class="m-3 bg-gray-300 p-1 border border-gray-100 rounded-md outline-none" min="1" max="5" placeholder="1 - 5">
+
+          <div class="flex items-center justify-between px-3 py-2 border-t bg-gray-50">
+            <button type="submit"
+              class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 ">
+              Post review
+            </button>
+          </div>
+        </div>
+      </form>
+
+  
+    </div>
+
+    <section class="">
+      <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+        <h2 class="text-center text-4xl font-bold">
+          Reviews dari para customer untuk restoran ini
+        </h2>
+
+        <div class="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8">
+          <blockquote class="rounded-lg bg-gray-100 p-8" v-for="review in reviews" :key="review.id">
+            <div class="flex items-center gap-4">
+              <img alt="Man"
+                src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+                class="h-16 w-16 rounded-full object-cover" />
+
+              <div>
+              <div class="flex justify-center gap-0.5 text-green-500">
+
+              </div>
+
+              <p class="mt-1 text-lg font-medium text-gray-700">{{ review.user.name }}</p>
+            </div>
+          </div>
+
+          <p class="line-clamp-2 sm:line-clamp-none mt-4 text-gray-500">
+            {{ review.text }}
+          </p>
+        </blockquote>
+
+
+      </div>
+    </div>
+  </section>
+
+</section></template>

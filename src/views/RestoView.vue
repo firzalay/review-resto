@@ -1,8 +1,7 @@
 <script setup>
 import { useRestoRepository } from "@/composables";
 import { ref, onMounted } from "vue";
-import BaseContainer from "../components/BaseContainer.vue";
-import BaseCard from "../components/BaseCard.vue";
+
 
 const repository = useRestoRepository();
 const isLoading = ref(true);
@@ -106,7 +105,7 @@ onMounted(() => fetchRestos());
 
       <div class="max-w-screen-xl mx-auto p-4 lg:flex gap-3">
         <div class="">
-          <h1 class="font-[Poppins] text-4xl font-bold mt-1">About us</h1>
+          <h1 class="font-[Poppins] text-4xl font-bold mt-1">About Us</h1>
 
           <p class="font-[Montserrat] leading-relaxed">Kami memberikan anda banyak pilihan restoran yang cocok untuk anda,
             mulai dari harga, tempat, dan tema bisa anda lihat disini, dan anda juga bisa memberikan reviews untuk
