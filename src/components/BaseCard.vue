@@ -12,11 +12,7 @@ defineProps({
 </script>
 
 <template>
-  <RouterLink
-    v-if="to"
-    :to="to"
-    class="block bg-white shadow p-4 rounded select-none"
-  >
+  <RouterLink v-if="to" :to="to" class="block bg-white shadow p-4 rounded select-none">
     <BaseCardTitle v-if="!!$slots.title">
       <slot name="title" />
     </BaseCardTitle>

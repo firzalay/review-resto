@@ -32,7 +32,7 @@ export const useRestoRepository = () => {
    * @param {*} data The data to be stored on the database.
    * @returns object
    */
-  const update = (id, data) => http.patch(`/api/restos/${id}`, data);
+  const update = (id,data) => http.patch(`/api/restos/${id}`,data);
 
   /**
    * Delete the specified record on the database.

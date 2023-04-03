@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen container mx-auto py-4">
+    <div class="min-h-screen container mx-auto p-6 ">
       <slot />
     </div>
 </template>
