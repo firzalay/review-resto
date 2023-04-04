@@ -25,11 +25,11 @@ const onSubmit = async () => {
     if (data) {
       localStorage.setItem("access_token", data.access_token);
       localStorage.setItem("user", JSON.stringify(data.user));
-      
-      let response = await axios.get("http://localhost:8000/api/auth/profile");
-      console.log(response.data);
+
       router.replace({ name: "restos" });
     }
+
+    
   } catch (e) {
     console.error(e);
   }
@@ -57,10 +57,11 @@ const onSubmit = async () => {
           Masuk
         </button>
 
-        <p class=" mt-2">Dont have account yet? <router-link :to="{name: 'register'} " class="text-blue-800">Register here</router-link></p>
+        <p class=" mt-2">Dont have account yet? <router-link :to="{ name: 'register' }" class="text-blue-800">Register
+            here</router-link></p>
       </form>
-      
+
     </section>
-   
+
   </main>
 </template>

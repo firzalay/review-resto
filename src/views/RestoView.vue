@@ -26,7 +26,6 @@ const fetchProfile = async () => {
   try {
     const { data } = await auth.profile();
     profile.value = data;
-    console.log(data);
   } catch (e) {
     console.error(e);
   }
@@ -78,7 +77,7 @@ onMounted(() => {
               <a href="#contact" class="block py-2 pl-3 pr-4 text-gray-900 rounded">Contact</a>
             </li>
             <li>
-              <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded">Hello </a>
+              <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded">Hello {{ profile.name }}</a>
             </li>
           </ul>
         </div>

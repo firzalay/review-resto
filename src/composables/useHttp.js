@@ -1,5 +1,8 @@
 import axios from "axios";
 
+const accessToken = localStorage.getItem("access_token");
+
+
 export const useHttp = () => {
   const client = axios.create({
     withCredentials: true,
@@ -7,6 +10,7 @@ export const useHttp = () => {
     headers: {
       "Content-Type": "multipart/form-data",
       "X-Requested-With": "XMLHttpRequest",
+      'Authorization': `Bearer ${accessToken}`,
     },
   });
 
@@ -25,4 +29,3 @@ export const useHttp = () => {
   };
 }
 
-export const setTokenCSRF = (token) => axios.defaults.headers.common = `Bearer ${token}`
