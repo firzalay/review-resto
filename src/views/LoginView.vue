@@ -2,6 +2,7 @@
 import { reactive, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useAuthRepository } from "@/composables";
+import axios from "axios";
 
 const repository = useAuthRepository();
 const route = useRoute();
@@ -12,15 +13,21 @@ const credentials = reactive({
   password: "",
   device_name: "browser",
 });
+
+
 const isLoggingIn = ref(false);
 const onSubmit = async () => {
   isLoggingIn.value = true;
 
   try {
+    await axios.get("http://localhost:8000/sanctum/csrf-cookie");
     const { data } = await repository.login(credentials);
     if (data) {
       localStorage.setItem("access_token", data.access_token);
       localStorage.setItem("user", JSON.stringify(data.user));
+      
+      let response = await axios.get("http://localhost:8000/api/auth/profile");
+      console.log(response.data);
       router.replace({ name: "restos" });
     }
   } catch (e) {
@@ -41,7 +48,7 @@ const onSubmit = async () => {
             class="border p-2 w-full bg-gray-50 outline-none focus:ring-4 focus:ring-blue-300 rounded" />
         </div>
         <div class="mb-4">
-          <label for="password" class="block mb-2">Password Confirmation</label>
+          <label for="password" class="block mb-2">Password</label>
           <input v-model="credentials.password" type="password" required
             class="border p-2 w-full bg-gray-50 outline-none focus:ring-4 focus:ring-blue-300 rounded" />
         </div>
@@ -50,7 +57,7 @@ const onSubmit = async () => {
           Masuk
         </button>
 
-        <p class=" mt-2">Dont have account yet? <router-link :to="{name: 'register'} " class="text-blue-800">Register now</router-link></p>
+        <p class=" mt-2">Dont have account yet? <router-link :to="{name: 'register'} " class="text-blue-800">Register here</router-link></p>
       </form>
       
     </section>

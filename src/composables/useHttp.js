@@ -2,9 +2,10 @@ import axios from "axios";
 
 export const useHttp = () => {
   const client = axios.create({
+    withCredentials: true,
     baseURL: import.meta.env.VUE_APP_API_URL || "http://localhost:8000",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "multipart/form-data",
       "X-Requested-With": "XMLHttpRequest",
     },
   });
@@ -23,3 +24,5 @@ export const useHttp = () => {
     destroy,
   };
 }
+
+export const setTokenCSRF = (token) => axios.defaults.headers.common = `Bearer ${token}`

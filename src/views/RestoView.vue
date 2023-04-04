@@ -1,11 +1,14 @@
 <script setup>
 import { useRestoRepository } from "@/composables";
+import { useAuthRepository } from "@/composables";
 import { ref, onMounted } from "vue";
 
 
 const repository = useRestoRepository();
+const auth = useAuthRepository();
 const isLoading = ref(true);
 const restos = ref([]);
+const profile = ref([]);
 
 const fetchRestos = async () => {
   isLoading.value = true;
@@ -18,6 +21,18 @@ const fetchRestos = async () => {
   isLoading.value = false;
 };
 
+const fetchProfile = async () => {
+  isLoading.value = true;
+  try {
+    const { data } = await auth.profile();
+    profile.value = data;
+    console.log(data);
+  } catch (e) {
+    console.error(e);
+  }
+  isLoading.value = false;
+}
+
 const excerpt = (text, maxLenght = 10, indicator = "...") => {
   let textCopy = text;
   if (textCopy.length > maxLenght) {
@@ -26,7 +41,10 @@ const excerpt = (text, maxLenght = 10, indicator = "...") => {
   return textCopy;
 };
 
-onMounted(() => fetchRestos());
+onMounted(() => {
+  fetchRestos(),
+    fetchProfile()
+});
 </script>
 
 <template>
@@ -58,6 +76,9 @@ onMounted(() => fetchRestos());
             </li>
             <li>
               <a href="#contact" class="block py-2 pl-3 pr-4 text-gray-900 rounded">Contact</a>
+            </li>
+            <li>
+              <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded">Hello </a>
             </li>
           </ul>
         </div>
@@ -128,7 +149,7 @@ onMounted(() => fetchRestos());
         <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow" v-for="resto in restos"
           :key="resto.id">
           <a href="#">
-            <img class="p-8 rounded-t-lg" src="../assets/image/image-4.jpg" alt="product image" />
+            <img class="p-8 rounded-t-lg" :src="'http://localhost:8000/storage/' + resto.image" alt="product image" />
           </a>
           <div class="px-5 pb-2">
             <a href="#">
