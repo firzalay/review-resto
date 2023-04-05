@@ -2,13 +2,17 @@
 import { useRestoRepository } from "@/composables";
 import { useAuthRepository } from "@/composables";
 import { ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
 
-
+const router = useRouter();
 const repository = useRestoRepository();
 const auth = useAuthRepository();
 const isLoading = ref(true);
+
 const restos = ref([]);
 const profile = ref([]);
+
+
 
 const fetchRestos = async () => {
   isLoading.value = true;
@@ -40,14 +44,27 @@ const excerpt = (text, maxLenght = 10, indicator = "...") => {
   return textCopy;
 };
 
+const logout =  () => {
+    auth.logout();
+    
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("user");
+  
+    router.replace({name : 'Login'});
+
+}
+
 onMounted(() => {
-  fetchRestos(),
+    fetchRestos(),
     fetchProfile()
 });
+
+
+
 </script>
 
 <template>
-  <div class="bg-gradient-to-tr from-stone-50 to-yellow-200 lg:min-h-screen md:min-h-min">
+  <div class="bg-gradient-to-tr from-stone-50 to-yellow-200 lg:min-h-screen md:min-h-min" >
 
     <nav class="">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -77,7 +94,10 @@ onMounted(() => {
               <a href="#contact" class="block py-2 pl-3 pr-4 text-gray-900 rounded">Contact</a>
             </li>
             <li>
-              <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded">Hello {{ profile.name }}</a>
+              <router-link v-if="profile.id" :to="{ name: 'profile', params: {id: profile.id}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded">Hello {{ profile.name }} </router-link>
+            </li>
+            <li @click="logout" class="hover:cursor-pointer">
+              <p class="block py-2 pl-3 pr-4 text-gray-900 rounded">Logout</p>
             </li>
           </ul>
         </div>

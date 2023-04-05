@@ -22,13 +22,12 @@ const onSubmit = async () => {
   try {
     await axios.get("http://localhost:8000/sanctum/csrf-cookie");
     const { data } = await repository.login(credentials);
-    if (data) {
-      localStorage.setItem("access_token", data.access_token);
-      localStorage.setItem("user", JSON.stringify(data.user));
-
-      router.replace({ name: "restos" });
-    }
-
+      if (data) {
+        localStorage.setItem("access_token", data.access_token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        
+        router.replace({ name: "restos" });
+    }    
     
   } catch (e) {
     console.error(e);

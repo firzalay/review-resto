@@ -22,6 +22,11 @@ const router = createRouter({
       component: () => import("../views/RestoView.vue"),
     },
     {
+      path: "/profile/:id",
+      name: "profile",
+      component: () => import("../views/ProfileView.vue"),
+    },
+    {
       path: "/restos/:id",
       name: "restos-show",
       component: () => import("../views/RestoDetailView.vue"),
