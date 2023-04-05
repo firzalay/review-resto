@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const accessToken = localStorage.getItem("access_token");
-console.log(accessToken);
+
 
 export const useHttp = () => {
   const client = axios.create({

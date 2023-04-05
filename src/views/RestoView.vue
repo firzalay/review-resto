@@ -1,6 +1,5 @@
 <script setup>
-import { useRestoRepository } from "@/composables";
-import { useAuthRepository } from "@/composables";
+import { useRestoRepository, useAuthRepository } from "@/composables";
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 
@@ -93,11 +92,14 @@ onMounted(() => {
             <li>
               <a href="#contact" class="block py-2 pl-3 pr-4 text-gray-900 rounded">Contact</a>
             </li>
-            <li>
-              <router-link v-if="profile.id" :to="{ name: 'profile', params: {id: profile.id}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded">Hello {{ profile.name }} </router-link>
+            <li class="bg-purple-500 rounded-md">
+              <router-link v-if="profile.id" :to="{ name: 'profile', params: {id: profile.id}}" class="block py-2 pl-3 pr-4 text-white ">Hello {{ profile.name }} </router-link>
             </li>
-            <li @click="logout" class="hover:cursor-pointer">
-              <p class="block py-2 pl-3 pr-4 text-gray-900 rounded">Logout</p>
+            <li class="bg-yellow-500 rounded-md">
+              <router-link :to="{ name: 'restos-create'}" class="block py-2 pl-3 pr-4 text-white ">Add Resto </router-link>
+            </li>
+            <li @click="logout" class="hover:cursor-pointer bg-red-600 rounded-md">
+              <p class="block py-2 pl-3 pr-4 text-white">Logout</p>
             </li>
           </ul>
         </div>
@@ -167,16 +169,17 @@ onMounted(() => {
       <div class="mt-10 flex flex-wrap gap-8 justify-center">
         <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow" v-for="resto in restos"
           :key="resto.id">
-          <a href="#">
+          <p v-if="resto.image">
             <img class="p-8 rounded-t-lg" :src="'http://localhost:8000/storage/' + resto.image" alt="product image" />
-          </a>
+          </p>
+          <p v-else><img class="p-8 rounded-t-lg mx-auto" src="../assets/image/broken-img.png" alt="product image" /> </p>
           <div class="px-5 pb-2">
             <a href="#">
               <h5 class="font-[Poppins] text-xl font-semibold tracking-tight text-gray-900 ">{{ resto.name }}</h5>
             </a>
           </div>
           <div class="px-5 pb-2 font-[Montserrat] text-xl font-semibold text-green-400">
-            Rp35.000
+            
           </div>
           <div class="px-5 pb-2 font-[Montserrat]">
             {{ excerpt(resto.description, 50) }}

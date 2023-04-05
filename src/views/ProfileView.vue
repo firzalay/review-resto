@@ -26,7 +26,7 @@ fetchProfile()
 </script>
 
 <template>
-    <div class="max-w-screen-xl mx-auto p-4 min-h-screen b">
+    <div class="max-w-screen-xl mx-auto p-4 min-h-screen ">
         <h1 class="font-[Poppins] text-4xl font-bold text-center mt-4">Your Profile</h1>
 
         <div class="flex justify-center mt-5">
