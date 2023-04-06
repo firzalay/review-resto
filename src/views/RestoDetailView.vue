@@ -4,6 +4,7 @@ import { useRestoRepository, useReviewsRepository } from "@/composables";
 import { ref, onMounted, reactive } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import Loading from '../components/Loading.vue';
+import Button from '../components/Button.vue';
 
 const repository = useRestoRepository();
 const review = useReviewsRepository();
@@ -44,7 +45,7 @@ const fetchReviews = async () => {
     reviews.value = data;
   } catch (e) {
     console.log(e);
-  }
+  } 
   isLoading.value = false;
 };
 
@@ -87,10 +88,12 @@ onMounted(() => fetchReviews());
 
     <section class="min-h-screen max-w-screen-xl mx-auto p-4">
       <div class="flex gap-5">
-        <router-link :to="{ name: 'restos' }"
-          class="bg-blue-500 text-white rounded-md p-2 px-4 font-[Poppins]">Back</router-link>
-        <router-link :to="{ name: 'restos-edit' }"
-          class="bg-purple-600 text-white rounded-md p-2 px-4 font-[Poppins]">Edit</router-link>
+        <Button class="bg-blue-500 rounded-md"><router-link :to="{ name: 'restos' }"
+            class="">Back</router-link></Button>
+        <Button class="bg-purple-500 rounded-md">
+          <router-link :to="{ name: 'restos-edit' }"
+            >Edit</router-link>
+        </Button>
         <button @click="deleteResto" class="bg-red-500 text-white rounded-md p-2 px-4 font-[Poppins]">Delete</button>
       </div>
       <div class="mt-5">
@@ -152,11 +155,23 @@ onMounted(() => fetchReviews());
               <div class="flex items-center gap-4">
 
                 <div>
-                  <div class="flex justify-center gap-0.5 text-green-500">
-
-                  </div>
-
                   <p class="mt-1 text-lg font-medium text-gray-700">{{ review.user.name }}</p>
+                  
+                  <div class="text-yellow-300 flex gap-1" v-if="review.rating == 1">
+                    <i class="bi bi-star-fill"></i>
+                  </div>
+                  <div class="text-yellow-300 flex gap-1" v-else-if="review.rating == 2">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  </div>
+                  <div class="text-yellow-300 flex gap-1" v-else-if="review.rating == 3">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  </div>
+                  <div class="text-yellow-300 flex gap-1" v-else-if="review.rating == 4">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  </div>
+                  <div class="text-yellow-300 flex gap-1" v-else-if="review.rating == 5">
+                    <i class="bi bi-star-fill"></i> 
+                  </div>
                 </div>
               </div>
 

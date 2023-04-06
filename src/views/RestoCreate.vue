@@ -80,10 +80,13 @@ const onSubmit = () => {
         </div>
         <div class="mb-6">
           <label for="image" class="block mb-2 text-sm font-medium text-gray-900">Resto image</label>
-          <img v-show="imageUrl" :src="imageUrl" alt="">
+          <img v-show="imageUrl" :src="imageUrl" alt="" class="mb-2 rounded-lg">
           <input type="file" id="image" @change="handleImage"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            required />
+            class=" block w-full file:mr-5 file:py-3 file:px-10
+            file:rounded-md file:border-0
+            file:font-semibold  file:text-white
+            file:bg-yellow-500"
+             />
         </div>
         <div class="mb-6">
           <label for="address" class="block mb-2 text-sm font-medium text-gray-900">Address</label>
